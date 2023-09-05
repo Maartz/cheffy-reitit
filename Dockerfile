@@ -8,7 +8,8 @@ RUN lein deps
 RUN lein uberjar
 
 
-FROM clojure:temurin-17-alpine
+FROM eclipse-temurin:11-jre-alpine
+
 WORKDIR /app
 
 COPY --from=build /app/target/cheffy.jar /app/app.jar
