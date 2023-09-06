@@ -5,10 +5,11 @@
             [environ.core :refer [env]])
   (:gen-class))
 
-(def app
+(defn app
+  [env]
   (ring/ring-handler
    (ring/router
-    [["/" {:get {:handler (fn [req] {:status 200 :body "Hello World"})}}]])))
+    [["/" {:get {:handler (fn [req] {:status 200 :body "Goodbye"})}}]])))
 
 (defmethod ig/prep-key :server/jetty
   [_ config]
