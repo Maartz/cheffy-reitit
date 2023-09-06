@@ -1,0 +1,10 @@
+(ns cheffy-reitit.router
+  [:require [reitit.ring :as ring]
+            [cheffy-reitit.recipe.routes :as recipe]])
+
+(defn routes
+  [env]
+  (ring/ring-handler
+   (ring/router
+    [["/v1" (recipe/routes env)]]))
+  )

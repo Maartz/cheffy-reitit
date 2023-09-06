@@ -12,14 +12,14 @@
 (def reset ig-repl/reset)
 (def reset-all ig-repl/reset-all)
 
-(defn app [] (-> state/system :cheffy-reitit/app))
-(defn db [] (-> state/system :db/postgres))
+(def app (-> state/system :cheffy-reitit/app))
+(def db (-> state/system :db/postgres))
 
 (comment
     (go)
     (halt)
     (reset)
     (reset-all)
-    (app)
+    (app {:request-method :get :uri "/v1/recipes"})
     (db)
   )

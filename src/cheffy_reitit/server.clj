@@ -2,14 +2,15 @@
   (:require [reitit.ring :as ring]
             [ring.adapter.jetty :as jetty]
             [integrant.core :as ig]
-            [environ.core :refer [env]])
+            [environ.core :refer [env]]
+            [cheffy-reitit.router :as router]
+            )
   (:gen-class))
 
 (defn app
   [env]
-  (ring/ring-handler
-   (ring/router
-    [["/" {:get {:handler (fn [req] {:status 200 :body "Goodbye"})}}]])))
+  (router/routes env))
+
 
 (defmethod ig/prep-key :server/jetty
   [_ config]
@@ -20,7 +21,7 @@
   (println (str "🚀 Server running on port: " port))
   (jetty/run-jetty handler {:port port :join? false}))
 
-(defmethod ig/init-key :cheffy/app
+(defmethod ig/init-key :cheffy-reitit/app
   [_ config]
   (println "\nStarted app")
   (app config))
