@@ -7,7 +7,6 @@ COPY . .
 RUN lein deps
 RUN lein uberjar
 
-
 FROM eclipse-temurin:11-jre-alpine
 
 WORKDIR /app
