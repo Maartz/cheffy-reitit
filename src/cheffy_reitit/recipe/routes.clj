@@ -2,5 +2,4 @@
 
 (defn routes
   [env]
-  ["/recipes" {:get {:handler (fn [req] {:status 200 :body "Hello from recipe"})}} ]
-  )
+  ["/recipes" {:get {:handler (fn [req] {:status 200 :body "Hello from recipe"})}}])
